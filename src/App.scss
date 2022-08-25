@@ -1,44 +1,76 @@
 #root {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: 100vh;
+  background-color: #dddddd;
+}
+
+.container {
+  width: 450px;
+  height: 425px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
   
-    height: 100vh;
-    background-color: #dddddd;
+
+  h1 {
+    font-family: 'Fredoka One', cursive;
+    font-size: 75px;
   }
-  
-  .container {
-    width: 450px;
-    height: 425px;
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    h1 {
-        font-family: 'Fredoka One', cursive;
-        font-size: 45px;
-    }
-   .text-length{
+
+  .text-length {
     font-size: 25px;
-    font-family: 'Coiny', cursive;
-   margin-bottom: 0;
-    
-   }
-   .btnStyle{
+    font-family: 'Fredoka One', cursive;
+    margin-bottom: 0;
+
+  }
+
+  .btnStyle {
     width: 45px;
     height: 45px;
     margin: 0 5px;
-    i{
+
+    i {
       font-size: 30px;
-      text-anchor: middle;
     }
-   }
-   .textDisplay{
+  }
+
+  .textDisplay {
     font-size: 35px;
     margin: 0 10px;
     font-family: 'Coiny', cursive;
-    
-    .controlDisplay{
-      border: 2px solid red;
+  }
+
+  .controlDisplay {
+    align-self: center;
+    width: 250px;
+    margin: 20px;
+    border: 10px solid rgb(136, 136, 136);
+    border-radius: 20px;
+    line-height: 50px;
+
+    #timer-label {
+      font-family: 'Fredoka One', cursive;
+      font-size: 45px;
     }
-   }
+
+    #time-left {
+      font-family: 'Fredoka One', cursive;
+      font-size: 80px;
+    }
+  }
+  #start_stop {
+    margin: 0 5px;
+    i{
+      font-size: 50px;
+    }
+  }
+  #reset {
+    margin: 0;
+    i{
+      font-size: 50px;
+    }
+  }
 }
