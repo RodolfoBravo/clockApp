@@ -31,23 +31,23 @@ class App extends React.Component {
           <div className='col'>
             <p id='break-label' className='text-length'>Break Length</p>
             <div className='col d-flex flex-row justify-content-center'>
-              <button id='break-increment'><i className="fa-solid fa-arrow-down"></i></button>
-              <p id='break-length'>{this.state.breakLenght}</p>
-              <button id='break-decrement'><i className="fa-solid fa-arrow-up"></i></button>
+              <button id='break-increment' className='btn btn-inline btnStyle'><i className="fa-solid fa-arrow-down"></i></button>
+              <p id='break-length' className='align-self-center textDisplay'>{this.state.breakLenght}</p>
+              <button id='break-decrement' className='btn btn-inline btnStyle'><i className="fa-solid fa-arrow-up"></i></button>
             </div>
           </div>
 
           <div className='col'>
             <p id='session-label' className='text-length'>Session Length</p>
             <div className='col d-flex flex-row justify-content-center'>
-              <button id='session-increment'><i className="fa-solid fa-arrow-down"></i></button>
-              <p id='session-length'>{this.state.sessionLenght}</p>
-              <button id='session-decrement'><i className="fa-solid fa-arrow-up"></i></button>
+              <button id='session-increment' className='btn btn-inline btnStyle'><i className="fa-solid fa-arrow-down"></i></button>
+              <p id='session-length' className='align-self-center textDisplay'>{this.state.sessionLenght}</p>
+              <button id='session-decrement' className='btn btn-inline btnStyle'><i className="fa-solid fa-arrow-up"></i></button>
             </div>
           </div>
 
         </div>
-        <div className='row'>
+        <div className='row controlDisplay'>
           <p id='timer-label'>Session</p>
           <p id='time-left'>{this.state.time}</p>
         </div>

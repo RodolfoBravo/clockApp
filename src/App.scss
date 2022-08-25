@@ -18,7 +18,27 @@
         font-size: 45px;
     }
    .text-length{
-    font-size: 20px;
+    font-size: 25px;
     font-family: 'Coiny', cursive;
+   margin-bottom: 0;
+    
+   }
+   .btnStyle{
+    width: 45px;
+    height: 45px;
+    margin: 0 5px;
+    i{
+      font-size: 30px;
+      text-anchor: middle;
+    }
+   }
+   .textDisplay{
+    font-size: 35px;
+    margin: 0 10px;
+    font-family: 'Coiny', cursive;
+    
+    .controlDisplay{
+      border: 2px solid red;
+    }
    }
 }
