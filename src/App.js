@@ -43,7 +43,8 @@ class App extends React.Component {
       seg: 1500,
       time: convertTime(1500),
       play: true,
-      type: 'Session'
+      type: 'Session',
+      style: { color: '#000' }
     })
     this.beepAudio.pause();
     this.beepAudio.currentTime = 0;
@@ -51,9 +52,14 @@ class App extends React.Component {
 
   startStopTimer() {
     var isPlay = this.state.play;
+    
     let flag;
     if (isPlay) {
       const intervalId = setInterval(() => {
+        console.log(this.state.seg);
+        this.setState({
+          intervalId: intervalId
+        })
         var timerType = (this.state.type == 'Session' ?
           this.setState({ type: 'Session' }) :
           this.state.type == 'Break' ?
@@ -103,9 +109,9 @@ class App extends React.Component {
           }
 
         }
+        console.log(timer);
 
-
-        console.log(this.state.seg);
+        
       }, 1000);
       this.setState({
         intervalId: intervalId
@@ -132,17 +138,29 @@ class App extends React.Component {
       clearInterval(this.state.intervalId)
     }
     if (type == 'break' && breakValue < 60) {
+      breakValue += 1
+      if (this.state.type=='Break'){
+        this.setState({
+          breakLenght: breakValue,
+          seg: breakValue * 60,
+          time: convertTime(breakValue * 60)
+        })  
+      } else{
       this.setState({
-        breakLenght: breakValue + 1
-      })
+        breakLenght: breakValue
+      })}
     } else if (type == 'session' && sessionValue < 60) {
       sessionValue += 1
-      var timer = convertTime(sessionValue * 60)
-      this.setState({
+      if (this.state.type=='Session'){
+        this.setState({
         sessionLenght: sessionValue,
-        time: timer,
-        seg: (sessionValue) * 60
-      })
+        time: convertTime(sessionValue * 60),
+        seg: sessionValue * 60
+      })} else {
+        this.setState({
+          sessionLenght: sessionValue})
+      }
+      
     }
   }
 
@@ -155,16 +173,31 @@ class App extends React.Component {
     }
     if (type == 'break' && breakValue > 1) {
       breakValue -= 1
+      if (this.state.type=='Break'){
+        this.setState({
+          breakLenght: breakValue,
+          seg: breakValue * 60,
+          time: convertTime(breakValue * 60)
+        })  
+      } else{
       this.setState({
-        breakLenght: breakValue - 1
-      })
+        breakLenght: breakValue
+      })}
+      console.log(breakValue);
+
     } else if (type == 'session' && sessionValue > 1) {
+     
       sessionValue -= 1
-      this.setState({
+      if (this.state.type=='Session'){
+        this.setState({
         sessionLenght: sessionValue,
         time: convertTime(sessionValue * 60),
         seg: sessionValue * 60
-      })
+      })} else {
+        this.setState({
+          sessionLenght: sessionValue})
+      }
+      console.log(this.state.sessionLenght);
     }
   }
 
@@ -202,7 +235,7 @@ class App extends React.Component {
             <p id='session-label' className='text-length'>Session Length</p>
             <div className='col d-flex flex-row justify-content-center'>
               <button
-                id='session-increment'
+                id='session-decrement'
                 className='btn btn-outline-dark btnStyle'
                 onClick={this.decrement}
                 value='session'
@@ -210,7 +243,7 @@ class App extends React.Component {
               >↓</button>
               <p id='session-length' className='align-self-center textDisplay'>{this.state.sessionLenght}</p>
               <button
-                id='session-decrement'
+                id='session-increment'
                 className='btn btn-outline-dark btnStyle'
                 onClick={this.increment}
                 value='session'
